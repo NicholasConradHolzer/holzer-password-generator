@@ -1,29 +1,5 @@
 # Password Generator Starter Code
 
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
+I've been heaving a real rough time readjusting to the school life so I've been super behind and for the third week in a row find myself working on an assignment within the last 10 hours before it's due; which I understand down the line is unprofesional and unpromissing but at the current time I'm more concerned with how much self loathing I felt juggling whether to start rushing through chapter four so I can have more time for that project and skipping another but I have a functional begining and maybe by turning in this; someone might be able to suggest how I can actually complete the password tool because I would definitely appriciate having one available.  I found many examples online and while I took inspiration from them I was very determined to make sure I was being 'original' with my approach to make sure I was at least understanding what I was implementing.  
 
-
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-
-
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-
-
-WHEN asked for character types to include in the password
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-
-
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-
-
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-
-
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+So here it is; please go full force with criticism I hate that I couldn't figure out how to integrate the different character-type strings, as well as the extreme repition in logic.  I'm quite determined to comprehend all of this; I really am, I hope that is evident in the fact I can't stop hemming and hawing about the situation like this isn't making it worse; but its 11:59 pm and as an assignment its time L3 is out of my hands :(
