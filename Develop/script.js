@@ -1,122 +1,72 @@
-//Assignment code here
-var pWalpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var pWbeta = "abcdefghijklmnopqrstuvwxyz";
-var pWnumbers = "1234567890";
-var pWsymbols = "~`!@#$%^&*()-_+={[}]:;'<,>.?/|";
+//Established selectable options for the Pass Word (PW) ; 
+//throughout script file will also refer to capital-letter selections with (alpha), 
+// lowercase-letter selections as (beta) , 
+// and special-characters with the word (symbols).
 
-var DisplayPassword = function() {
-  if (CharacterNum = true) {
-    console.log(pWnumbers.concat())
-  }
-}
+const PWalpha = ["A" , "B" , "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J" , "K" , "L" , "M" , "N" , "O" , "P" , "Q" , "R" , "S" , "T" , "U" , "V" , "W" , "X" , "Y" , "Z"]
+const PWbeta = ["a" , "b" , "c" , "d" , "e" , "f" , "g" , "h" , "i" , "j" , "k" , "l" , "m" , "n" , "o" , "p" , "q" , "r" , "s" , "t" , "u" , "v" , "w" , "x" , "y" , "z"]
+const PWnumbers = [0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9]
+const PWsymbols = ["~" , "`" , "!" , "@" , "#", "$" , "%" , "^" , "&" , "*" , "(" , ")" , "-" , "_" , "+" , "=" , "{" , "[" , "}" , "]" , ":" , ";" , "<" , ">" , "." , "?" , "/"]
 
-
-var PasswordSymbols = function() {
-  var CharacterSym = window.prompt("Does the password require any: SPECIAL-CHARACTERS? (Y/N)");
-  if (CharacterSym === "" || CharacterSym === null) {
-    window.alert("Please choose 'Y' for SPECIAL-CHARACTERS, or 'N' for NO-SPECIAL-CHARACTERS!")
-    return PasswordSymbols();
-  }
-CharacterSym = CharacterSym.toLowerCase();
-if (CharacterSym === "y" || CharacterSym ==="yes") {
-  CharacterSym = true;
-} else {
-  CharacterSym = false;
-}
-DisplayPassword();
-};
-
-var PasswordBetas = function() {
-  var CharacterBeta = window.prompt("Does the password require any: LOWERCASE-LETTERS? (Y/N)");
-  if (CharacterBeta === "" || CharacterBeta === null) {
-    window.alert("Please choose 'Y' for LOWERCASE-LETTERS, or 'N' for NO-LOWERCASE-LETTERS!")
-    return PasswordBetas();
-  }
-CharacterBeta = CharacterBeta.toLowerCase();
-if (CharacterBeta === "y" || CharacterBeta ==="yes") {
-  CharacterBeta = true;
-} else {
-  CharacterBeta = false;
-}
-PasswordSymbols();
-};
-
-var PasswordAlphas = function() {
-  var CharacterAlpha= window.prompt("Does the password require any: UPPERCASE-LETTERS? (Y/N)");
-  if (CharacterAlpha === "" || CharacterAlpha === null) {
-    window.alert("Please choose 'Y' for UPPERCASE-LETTERS, or 'N' for NO-UPPERCASE-LETTERS!")
-    return PasswordAlphas();
-  }
-CharacterAlpha = CharacterAlpha.toLowerCase();
-if (CharacterAlpha === "y" || CharacterAlpha ==="yes") {
-  CharacterAlpha = true;
-} else {
-  CharacterAlpha = false;
-}
-PasswordBetas();
-};
+console.log (PWalpha);
+console.log (PWbeta);
+console.log (PWnumbers);
+console.log (PWsymbols);
 
 
-var passwordNumbers = function() {
-  var CharacterNum = window.prompt("Does the password require any: NUMBERS? (Y/N)");
-    if (CharacterNum === "" || CharacterNum === null) {
-      window.alert("Please choose 'Y' for NUMBERS, or 'N' for NO-NUMBERS!")
-      return passwordNumbers();
+//Password Query/Random-Generator Suite
+function makePW (x,y) {
+  //Determinator for Length of Password:
+  let PWLength = parseInt(prompt("How long does the password need to be? (8-128 Characters"))
+    if (isNaN(PWLength)){
+      prompt("Please enter a number between 8-128");
+      return
     }
-  CharacterNum = CharacterNum.toLowerCase();
-  if (CharacterNum === "y" || CharacterNum ==="yes") {
-    CharacterNum = true;
-  } else {
-    CharacterNum = false;
-  }
-  PasswordAlphas();
+    if (PWLength < 8 || PWLength > 128) {
+      prompt("Please enter a number between 8-128");
+    }
+
+//Selection Options for the to-be Generated Password
+  let onPWalpha = confirm("Does your password need Capital-Letters? (ABC)")
+  let onPWbeta = confirm("Does your password need Lowercase-Letters? (abc)")
+  let onPWnumbers = confirm("Does your password need Numbers? (123)")
+  let onPWsymbols = confirm("Does your password need Special Charactes? ($#!%)")
+
+//PassWord chosen OPTions=PWcOPT
+  let PWcOpt = []
+    if (onPWalpha) {
+      PWcOpt = PWcOpt.concat(PWalpha)
+    }
+    if (onPWbeta) {
+      PWcOpt = PWcOpt.concat(PWbeta)
+    }
+    if (onPWnumbers) {
+      PWcOpt = PWcOpt.concat(PWnumbers)
+    }
+    if (onPWsymbols) {
+      PWcOpt = PWcOpt.concat(PWsymbols)
+    }
+  console.log(PWcOpt)
+
+//Password Printer-Internal -> collects selected characters and sends them to the presenter on the client side
+  let PWprint = "";
+    for (let i=0 ; i<PWLength ; i++) {
+      let randomRef = Math.floor(Math.random()*PWcOpt.length)
+      let randomer = PWcOpt[randomRef]
+      PWprint = PWprint + randomer
+      console.log(PWprint)
+    }
+    return PWprint
 };
 
+//Present Password to client side
+function presPW() {
+  var PW = makePW();
+  var PWText = document.querySelector("#password");
 
-
-var generatePassword = function() {{
-
-  var choiceLength = window.prompt("How many characters must your password be? (Must be 8-128 characters)");
-  
-  choiceLength = parseInt(choiceLength);
-  if(choiceLength >= 8 && choiceLength <= 128)
-    {
-      passwordNumbers();
-    }
-    else
-    {
-      alert("For character count of your password please select a number between 8-128!")
-      generatePassword();
-    }
-  }
-
-
-
-};
-
-
-    // ""
-  
-    // ""
-
-    // ""
-  
-    // 
-  
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+  PWText.value = PW;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
+//Enable Generating Click
+const genClick = document.querySelector("#generate");
+genClick.addEventListener("click", presPW);
