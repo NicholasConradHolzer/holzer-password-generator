@@ -23,7 +23,8 @@ function makePW (x,y) {
       return
     }
     if (PWLength < 8 || PWLength > 128) {
-      prompt("Please enter a number between 8-128");
+      prompt("Number MUST BE between 8-128");
+      return makePW();
     }
 
 //Selection Options for the to-be Generated Password
